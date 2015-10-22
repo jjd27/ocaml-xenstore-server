@@ -1,0 +1,13 @@
+[Unit]
+Description=The Xen xenstore
+Requires=proc-xen.mount
+After=proc-xen.mount
+Before=libvirtd.service libvirt-guests.service
+
+[Service]
+KillMode=none
+ExecStart=/usr/sbin/xenstored-v3 --daemon --enable-unix --enable-xen
+
+[Install]
+WantedBy=multi-user.target
+Also=proc-xen.mount
