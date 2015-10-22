@@ -157,11 +157,10 @@ let program_thread daemon path pidfile enable_xen enable_unix irmin_path prefer_
         fail e
     end else return () in
   let (b: unit Lwt.t) =
-    (*
     if enable_xen then begin
       info "Starting server on xen inter-domain transport";
       DomainServer.serve_forever ()
-    end else *) return () in
+    end else return () in
   Introduce.(introduce { Domain.domid = 0; mfn = 0n; remote_port = 0 }) >>= fun () ->
   debug "Introduced domain 0";
   lwt () = a in
